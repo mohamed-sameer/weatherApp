@@ -18,5 +18,6 @@ To be able to run this project you'll need to install
 
 ## Installation
 
-- clone this repository using `git clone` and paste the link of the repository
-- open the project folder and click on `index.html` file in the browser
+- clone this repository using `git clone https://github.com/mohamed-sameer/weatherApp.git`
+- navigate to the website directory `cd weatherApp/website`
+- run this command `node server.js`
