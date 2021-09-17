@@ -10,7 +10,7 @@ const userFeedback = document.getElementById('feelings');
 
 // Create a new date instance dynamically with JS
 const d = new Date();
-const newDate = `${d.getMonth() + 1}.${d.getDate()}.${d.getFullYear()}`;
+const newDate = d.toDateString();
 
 // update html values
 const updateView = async (path) => {
@@ -19,7 +19,7 @@ const updateView = async (path) => {
     const storedData = await request.json();
     // update html values with data retrieved from projectData object
     dateDiv.innerHTML = storedData.date;
-    tempDiv.innerHTML = storedData.temperature;
+    tempDiv.innerHTML = `${Math.round(storedData.temperature)} C°`;
     contentDiv.innerHTML = storedData.userFeedback;
   } catch (err) {
     console.log(err);
@@ -44,7 +44,7 @@ const sendData = async (path, data) => {
 
 // get data from openWeatherMap api
 const getWeather = async (zipVal) => {
-  const response = await fetch(`${url}zip=${zipVal}&appid=${apiKey}`);
+  const response = await fetch(`${url}zip=${zipVal}&appid=${apiKey}&units=metric`);
   // check if fetched data returned
   if (response.status !== 200) {
     throw new Error('cannot fetch data'); // custom error to detect if there is an error in api itself
